@@ -1,0 +1,16 @@
+# Secrets: never commit
+models.json
+.env
+*.key
+
+# Raw collected data (only hand-labelled eval data is committed)
+data/raw/
+data/cache/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
