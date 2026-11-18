@@ -4,12 +4,13 @@ A CLI agent that watches the US stock market and tells you how it moved and what
 
 > Course personal project for _Agentic Computer Science_ (University of Ljubljana FRI, 2026/27).
 
+---
 
 ## What it is
 
 **Problem.** 
 
-Every morning I check how each stock on my watchlist moved and search scattered news by hand. Moves mix market, sector and stock news, so the picture is unclear.s
+Every morning I check how each stock on my watchlist moved and search scattered news by hand. Moves mix market, sector and stock news, so the picture is unclear.
 
 **Solution.**
 
@@ -26,6 +27,7 @@ Every morning I check how each stock on my watchlist moved and search scattered 
 5.  **Issue Summaries with Link**: every line linked to its source, unsure items marked
 6.  **Morning Delivery**: a Markdown note or a Telegram message
 
+---
 
 ## Goals and objectives
 
@@ -40,6 +42,7 @@ Each goal has a check that decides whether it is done.
 | G5 | **Write and send the brief.** Markdown note + Telegram message. Numbers come from code, not from the model | Automatic checks pass before sending | ☐ |
 | G6 | **Measure quality.** Hand-label ~150–200 news items and compare them with the agent: precision/recall per category, Qwen 3.6 35B vs. a small local model | Accuracy table in `docs/` | ☐ |
 
+---
 
 ## Agentic stack
 
@@ -60,7 +63,7 @@ Every tool and model is declared with its version. The stack may change; every c
 *   One goal per fresh session. Plans and progress live in files (`docs/`), not in the chat.
 *   Each goal ends with a check script that must pass before the commit.
 *   Commits made with AI help carry a `Co-Authored-By` line, so the commit history is the AI-use log.
-
+---
 
 ## Install, run, demo
 
@@ -70,6 +73,7 @@ Not ready yet. This section will be filled during Sprint 1.
 # TBD
 ```
 
+---
 
 ## Repository layout
 
@@ -80,6 +84,7 @@ docs/   architecture notes, screenshots, evaluation results
 
 Data policy: raw collected data (prices, news) is **not** committed. Only the hand-labelled evaluation data is committed. Secrets (dingo key, `models.json`, Telegram token) are never committed.
 
+---
 
 ## Milestones
 
