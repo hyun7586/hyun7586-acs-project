@@ -87,12 +87,34 @@ Data policy: raw collected data (prices, news) is **not** committed. Only the ha
 
 ---
 
-## Milestones
+## Progress
 
-| Date | Milestone |
-| --- | --- |
-| 16 Nov | 3-min pitch ✔ |
-| 23 Nov – 13 Dec | Sprint 1: G1–G3 + start daily data collection |
-| 14 Dec | Checkpoint: one-slide status + talk |
-| 21 Dec – 11 Jan | Sprint 2: G4–G6 |
-| 11 Jan | Demo Day + report |
+Last updated: 21 Nov 2026 · Goals done: 0 / 6 · Red line = today
+
+```mermaid
+gantt
+    title Stock Briefing Agent timeline
+    dateFormat YYYY-MM-DD
+    axisFormat %d %b
+    todayMarker stroke-width:3px,stroke:#e5484d,opacity:0.9
+
+    section Setup
+    Pitch                     :done,      pitch, 2026-11-16, 1d
+    Repo setup (#1-#3)        :done,      repo,  2026-11-18, 3d
+    S0 Project setup          :           s0,    2026-11-23, 3d
+
+    section Sprint 1
+    G1 Measure the move       :           g1,    after s0, 6d
+    G2 Market vs. stock       :           g2,    after g1, 4d
+    G3 Gather issues          :           g3,    after g2, 7d
+    Daily data collection     :           col,   2026-11-26, 2027-01-08
+    Checkpoint                :milestone, cp,    2026-12-14, 0d
+
+    section Sprint 2
+    G4 Classify relevance     :           g4,    2026-12-21, 6d
+    G5 Write and send brief   :           g5,    after g4, 5d
+    G6 Measure quality        :           g6,    2026-12-28, 2027-01-10
+    Demo Day + report         :milestone, demo,  2027-01-11, 0d
+```
+
+Bars marked `done` (grey) are finished, `active` is in progress. Goal status is tracked in the [Goals](#goals-and-objectives) table.
