@@ -63,6 +63,7 @@ Every tool and model is declared with its version. The stack may change; every c
 *   One goal per fresh session. Plans and progress live in files (`docs/`), not in the chat.
 *   Each goal ends with a check script that must pass before the commit.
 *   Commits made with AI help carry a `Co-Authored-By` line, so the commit history is the AI-use log.
+
 ---
 
 ## Install, run, demo
