@@ -18,7 +18,7 @@ Every morning I check how each stock on my watchlist moved and search scattered 
 *   **The agent** finds the related issues, classifies them and summarizes them with source links.
 *   It gives market insight only. **No buy/sell advice and no cause claims.** It shows what happened in the same time window, not why.
 
-### Features (what the user gets)
+### Features
 
 1.  **Market Overview**: indexes, VIX, yields, sector ETFs
 2.  **Move Details per Stock**: % change, gap, pre/after-hours move, volume, trend label
@@ -29,40 +29,31 @@ Every morning I check how each stock on my watchlist moved and search scattered 
 
 ---
 
-## Goals and objectives
+## Goals
 
-Each goal has a check that decides whether it is done.
+Numbered, checkable goals. Details, "done when" checks and status: [docs/goals.md](docs/goals.md).
 
-| # | Goal | Done when | Status |
-| --- | --- | --- | --- |
-| G1 | **Measure the move.** % change, gap, pre/after-hours move, volume vs 20-day average, trend label (up / down / flat / pullback / rebound) per stock | Fixed test cases pass | ☐ |
-| G2 | **Separate market vs. stock.** Split each move into market (SPY/QQQ), sector-ETF and stock-specific parts | Numeric tests pass | ☐ |
-| G3 | **Gather issues.** Collect items from the sources below in the time window, remove duplicates, mark name/ticker matches | Collection log for every run | ☐ |
-| G4 | **Classify relevance.** The agent tags each news item `direct` / `sector` / `macro` / `unrelated` with a verbatim quote and a confidence | Output passes the JSON schema check | ☐ |
-| G5 | **Write and send the brief.** Markdown note + Telegram message. Numbers come from code, not from the model | Automatic checks pass before sending | ☐ |
-| G6 | **Measure quality.** Hand-label ~150–200 news items and compare them with the agent: precision/recall per category, Qwen 3.6 35B vs. a small local model | Accuracy table in `docs/` | ☐ |
+1. **G1 Measure the move**: % change, gap, pre/after-hours move, volume, trend label per stock
+2. **G2 Separate market vs. stock**: market, sector-ETF and stock-specific parts of each move
+3. **G3 Gather issues**: news, filings, rating changes, earnings in the time window, deduplicated
+4. **G4 Classify relevance**: the agent tags each news item direct / sector / macro / unrelated, with a quote
+5. **G5 Write and send the brief**: Markdown note + Telegram message, numbers from code only
+6. **G6 Measure quality**: hand-labelled evaluation, Qwen 3.6 35B vs. a small local model
 
 ---
 
 ## Agentic stack
 
-Every tool and model is declared with its version. The stack may change; every change is logged here with a date.
+Every tool and pinned model tag. Roles, how I work with the agents and the change log: [docs/agentic-stack.md](docs/agentic-stack.md).
 
-| Role | Tool | Pinned version / tag | What it does |
-| --- | --- | --- | --- |
-| Build agent | Claude Code | 2.1.311, models `claude-opus-5-5`, `claude-sonnet-5-5` | Writes and tests the code under my direction |
-| Runtime agent | Qwen 3.6 35B on the course server (dingo) | TBD: exact tag | Classifies and summarizes issues (G4, G5) |
-| Comparison model | Small local model via Ollama | TBD | Baseline for G6 |
-| Data | yfinance, Yahoo/Nasdaq/Google News RSS, SEC EDGAR | TBD | Prices, news, ratings, earnings, filings (no API keys) |
-| Delivery | Telegram Bot API | — | Sends the morning brief |
-| Language | Python | TBD | — |
-
-### How I work with the agents
-
-*   Claude Code builds the tools. Qwen calls them at runtime.
-*   One goal per fresh session. Plans and progress live in files (`docs/`), not in the chat.
-*   Each goal ends with a check script that must pass before the commit.
-*   Commits made with AI help carry a `Co-Authored-By` line, so the commit history is the AI-use log.
+| Tool | Pinned version / tag |
+| --- | --- |
+| Claude Code (build) | 2.1.311 · `claude-opus-5-5`, `claude-sonnet-5-5` |
+| Qwen 3.6 35B on dingo (runtime) | TBD |
+| Local comparison model (Ollama) | TBD |
+| yfinance, RSS, SEC EDGAR (data) | TBD |
+| Telegram Bot API (delivery) | — |
+| Python | TBD |
 
 ---
 
@@ -73,17 +64,6 @@ Not ready yet. This section will be filled during Sprint 1.
 ```
 # TBD
 ```
-
----
-
-## Repository layout
-
-```
-src/    source code
-docs/   architecture notes, screenshots, evaluation results
-```
-
-Data policy: raw collected data (prices, news) is **not** committed. Only the hand-labelled evaluation data is committed. Secrets (dingo key, `models.json`, Telegram token) are never committed.
 
 ---
 
@@ -117,4 +97,15 @@ gantt
     Demo Day + report         :milestone, demo,  2027-01-11, 0d
 ```
 
-Bars marked `done` (grey) are finished, `active` is in progress. Goal status is tracked in the [Goals](#goals-and-objectives) table.
+Bars marked `done` (grey) are finished, `active` is in progress. Goal status is tracked in the [goals](docs/goals.md) table.
+
+---
+
+## Docs
+
+| Doc | What |
+| --- | --- |
+| [Goals](docs/goals.md) | Goals G1–G6 with checks and status |
+| [Agentic stack](docs/agentic-stack.md) | Tools, models, how I work with the agents |
+| [CLAUDE.md](CLAUDE.md) | Rules for coding agents |
+| [Docs index](docs/README.md) | All docs: decisions, plans, specs, evals, session logs, repo layout |
