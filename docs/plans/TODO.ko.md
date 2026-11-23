@@ -1,11 +1,12 @@
 # 구현 TODO
 
-영문판: [TODO.en.md](TODO.en.md). 리프 항목 하나 ≈ GitHub 이슈 하나. 괄호 안은 브랜치 이름.
+영문판: [TODO.en.md](TODO.en.md). 아래 노드 하나 = GitHub 이슈 하나(#6–#17), 리프 항목 = 이슈 안 체크박스. 괄호 안은 브랜치 이름.
 
 ```
 Stock Briefing Agent
 ├── S0. 준비 (11/23, Sprint 1 첫 세션)
-│   ├── CLAUDE.md 작성 (placeholder → 실제 규칙)
+│   ├── 사용자와 결정: 시간 창(ADR 005), config 형식 + 관심 종목, 추세 임계값
+│   ├── CLAUDE.md에 실행/테스트 명령 추가 (규칙은 #5에서 작성 완료)
 │   ├── Python 프로젝트 뼈대: pyproject, src/briefing/, tests/, `briefing run` CLI 진입점
 │   ├── config 파일: 관심 종목, 종목별 섹터 ETF·별칭, 임계값
 │   ├── dingo 연결 확인 + Qwen 정확한 태그 확인 → README stack 표 채우기

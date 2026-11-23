@@ -34,4 +34,12 @@ If the requests are missing, stop and ask the caller for them. Never invent requ
 - No secrets (API keys, tokens, `models.json` contents, personal emails).
 
 ## Output to the caller
-Return the file path and a three-line summary. Do not commit; the caller commits the log with the PR.
+Do not commit; the caller commits the log with the PR.
+Your final reply must be exactly this shape — never a single word, never empty:
+
+```
+Log: docs/sessions/2026-11-20-agent-docs-structure.md
+- Requests: 2 (translated to English)
+- Agent misses recorded: 1
+- Open questions for the caller: none
+```
