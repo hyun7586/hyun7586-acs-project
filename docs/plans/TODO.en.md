@@ -1,11 +1,12 @@
 # Implementation TODO
 
-Korean version: [TODO.ko.md](TODO.ko.md). Each leaf item is about one GitHub issue. Branch names in brackets.
+Korean version: [TODO.ko.md](TODO.ko.md). Each node below is one GitHub issue (#6–#17); leaf items are the issue's checkboxes. Branch names in brackets.
 
 ```
 Stock Briefing Agent
 ├── S0. Setup (23 Nov, first Sprint 1 session)
-│   ├── Write CLAUDE.md (placeholder → real rules)
+│   ├── Decide with the user: time window (ADR 005), config format + watchlist, trend thresholds
+│   ├── Add run/test commands to CLAUDE.md (rules already written, #5)
 │   ├── Python project skeleton: pyproject, src/briefing/, tests/, `briefing run` CLI entry point
 │   ├── Config file: watchlist, sector ETF and aliases per stock, thresholds
 │   ├── Check dingo connection + exact Qwen tag → fill the README stack table

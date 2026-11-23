@@ -15,6 +15,8 @@ Goals G1–G6: [docs/goals.md](docs/goals.md). Stack: [docs/agentic-stack.md](do
 | Data | Keyless free sources only (yfinance, RSS, SEC EDGAR). Title + summary only, no article-body crawling | [ADR 003](docs/decisions/003-free-data-sources.md) |
 | Secrets | Never commit `models.json`, `.env`, the dingo key or the Telegram token. Never print them | Course rule |
 | Data in git | Raw collected data (`data/raw/`) is never committed. Hand-labelled eval data (`data/eval/`) is | Repo policy |
+| Tests | Tests never call the network. They use small committed fixtures in `tests/fixtures/` (a few days, trimmed, no secrets) — the only exception to the raw-data rule | yfinance is unofficial and flaky |
+| Config | Secrets come from `.env` (see `.env.example`). Tickers, aliases, sector ETFs and thresholds come from the config file | No secrets or values in code |
 | Workflow | One goal per session, on its own branch. A check (tests/script) must pass before a commit. Follow [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md) | Graded process |
 | Language | Everything in the repo is English, except `*.ko.md` files | Graded report |
 
@@ -29,12 +31,18 @@ Goals G1–G6: [docs/goals.md](docs/goals.md). Stack: [docs/agentic-stack.md](do
 - ❌ Commit without the `Co-Authored-By` trailer when an agent wrote the change
 - ❌ Write or run session logs before the user says logging has started
 
+## Commands
+
+To be added with the project skeleton (S0, #6): install, run, test.
+
 ## Where things live
 
 | What | Where |
 |---|---|
 | Doc index (status of every doc) | [docs/README.md](docs/README.md) |
 | Decisions (why X, not Y) | [docs/decisions/](docs/decisions/) |
+| Module flow and `src/` layout | [docs/architecture.md](docs/architecture.md) |
+| Brief output format (golden sample) | [docs/specs/brief-format.md](docs/specs/brief-format.md) |
 | Design per goal, before code | [docs/specs/](docs/specs/) |
 | TODO tree and task plans per goal | [docs/plans/](docs/plans/) |
 | Prompt and model evaluation results | [docs/evals/](docs/evals/) |
@@ -49,3 +57,4 @@ Code is the source of truth for behaviour. If a doc disagrees with the code, fix
 | 2026-11-20 | Placeholder created | CLAUDE.md | Agent docs structure (#3) |
 | 2026-11-21 | Rules, common mistakes, doc map; ADR 001–004 added | CLAUDE.md, docs/ | Adopt rule table + change log + ADRs from reference repos |
 | 2026-11-21 | Goals and stack links point to docs/goals.md, docs/agentic-stack.md; ADR 004 accepted | CLAUDE.md | README split into docs |
+| 2026-11-23 | Test-fixture exception, config/secrets rule, Commands section, architecture + brief-format links | CLAUDE.md | Dev setup before S0 |

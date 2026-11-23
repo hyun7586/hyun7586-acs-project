@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # ponytail: steps skip until the Python project exists (S0, #6); remove the guards then
+      - uses: actions/setup-python@v5
+        if: hashFiles('pyproject.toml') != ''
+        with:
+          python-version: "3.12"
+      - if: hashFiles('pyproject.toml') != ''
+        run: pip install -e ".[dev]"
+      - if: hashFiles('pyproject.toml') != ''
+        run: pytest -q

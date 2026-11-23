@@ -17,3 +17,6 @@ __pycache__/
 
 # Claude Code local settings (per machine)
 .claude/settings.local.json
+
+# Generated briefs (derived from raw data)
+briefs/
